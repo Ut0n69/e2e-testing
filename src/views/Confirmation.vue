@@ -3,13 +3,13 @@
     <h1 class="Confirmation__title">Confirmation</h1>
     <div class="Confirmation__input-body">
       <label class="Confirmation__input-body-label">Name</label>
-      <h2>{{ $store.state.input.name }}</h2>
+      <h2>{{ inputValue.name }}</h2>
       <label class="Confirmation__input-body-label">Email</label>
-      <h2>{{ $store.state.input.email }}</h2>
+      <h2>{{ inputValue.email }}</h2>
       <label class="Confirmation__input-body-label">Gender</label>
-      <h2>{{ $store.state.input.gender }}</h2>
+      <h2>{{ inputValue.gender }}</h2>
       <label class="Confirmation__input-body-label">Country</label>
-      <h2>{{ $store.state.input.country }}</h2>
+      <h2>{{ inputValue.country }}</h2>
       <template v-if="buttonDisabled">
         <button
           disabled
@@ -20,7 +20,11 @@
         </button>
       </template>
       <template v-else>
-        <button @click="submit" class="Confirmation__input-body-button">
+        <button
+          id="e2e-confirmation-button"
+          @click="submit"
+          class="Confirmation__input-body-button"
+        >
           <p>Submit</p>
         </button>
       </template>
@@ -33,8 +37,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Confirmation",
+  computed: {
+    ...mapState({
+      inputValue: state => state.input
+    })
+  },
   data() {
     return {
       buttonDisabled: false

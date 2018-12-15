@@ -2,7 +2,7 @@
   <div class="Completion">
     <h1 class="Completion__title">Completion</h1>
     <div class="Completion__body">
-      <h2>It has been successful</h2>
+      <h2 id="e2e-completion-text">It has been successful</h2>
       <router-link class="Completion__body-button" to="/" tag="button">
         Back To Top
       </router-link>
