@@ -1,3 +1,5 @@
 import memberRegister from "./specs/memberRegister";
 
-memberRegister();
+(() => {
+  memberRegister();
+})();

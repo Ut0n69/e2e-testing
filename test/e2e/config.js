@@ -3,6 +3,7 @@ module.exports = {
   browser: {
     ignoreHTTPSErrors: true,
     headless: true,
-    slowMo: 0
+    slowMo: 0,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"]
   }
 };
