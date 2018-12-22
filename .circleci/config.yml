@@ -22,7 +22,6 @@ jobs:
           root: .
           paths:
             - dist
-          
   deploy:
     docker:
       - image: buildpack-deps:trusty
