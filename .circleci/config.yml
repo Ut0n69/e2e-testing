@@ -16,8 +16,12 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
           
   deploy:
     docker:
