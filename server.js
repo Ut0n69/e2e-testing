@@ -3,11 +3,11 @@ const LISTEN_PORT = 8000;
 const express = require("express");
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static("dist"));
 
 // root
 app.get("/", function(req, res) {
-  res.sendFile("./public/index.html");
+  res.sendFile("./dist/index.html");
 });
 
 // not found
