@@ -1,21 +1,18 @@
 # e2e-testing
 
-## Project setup
+This is a e2e testing sample.
+
+## Testing tools
+- ava
+- puppeteer
+- chromium
+
+## Installation
 ```
-yarn install
+yarn
+yarn serve
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
+## Description
+```yarn serve```: serve application on your loacal
+```yarn test```: test applicattion
