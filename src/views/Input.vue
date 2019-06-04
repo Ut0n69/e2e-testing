@@ -80,6 +80,9 @@
 </template>
 
 <script>
+import { MemberEntryController } from "@/Controllers/MemberEntryController";
+import { MemberEntryUseCase } from "@/UseCases/MemberEntryUseCase";
+
 export default {
   name: "Input",
   data() {
@@ -97,17 +100,31 @@ export default {
     validation() {
       return !Object.keys(this.input).some(key => !this.input[key]);
     },
+    err() {
+      this.isShowErrorMessage = true;
+    },
     submit() {
-      if (this.validation()) {
-        this.isShowErrorMessage = false;
-        this.$store.commit("updateInput", this.input);
-        this.$router.push({
-          path: "/confirmation",
-          params: this.input
+      try {
+        const memberEntryController = new MemberEntryController({
+          memberEntryUseCase: new MemberEntryUseCase(this.input),
+          errorService: this.err
         });
-      } else {
-        this.isShowErrorMessage = true;
+        memberEntryController.excute();
+      } catch (e) {
+        this.err();
       }
+
+      // TODO: 成功時の処理をUseCaseに移す
+      //   if (this.validation()) {
+      //     this.isShowErrorMessage = false;
+      //     this.$store.commit("updateInput", this.input);
+      //     this.$router.push({
+      //       path: "/confirmation",
+      //       params: this.input
+      //     });
+      //   } else {
+      //     this.isShowErrorMessage = true;
+      //   }
     }
   },
   beforeRouteEnter(to, from, next) {
